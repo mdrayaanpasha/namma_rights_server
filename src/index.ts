@@ -9,7 +9,12 @@ import UserRouter from "./routers/user.router";
 
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: "https://namma-rights.vercel.app",  // Allow only your frontend
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization"
+}));
+
 app.use(bodyParser.json());
 ConnectToDB();
 
