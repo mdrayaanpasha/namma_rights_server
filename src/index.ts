@@ -10,22 +10,7 @@ import UserRouter from "./routers/user.router";
 
 const app = express();
 
-app.use((req, res, next) => {
-    console.log("Origin:", req.headers.origin);
-    res.header("Access-Control-Allow-Origin", "https://nammarights.vercel.app");
-    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
-    res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
-    next();
-});
-
-
-app.options("*", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "https://nammarights.vercel.app");
-    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    res.sendStatus(200);
-});
-
+app.use(cors())
 
 
 app.use(bodyParser.json());

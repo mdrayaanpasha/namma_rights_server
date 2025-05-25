@@ -13,24 +13,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const connectDB_1 = require("./config/connectDB");
 const rights_router_1 = __importDefault(require("./routers/rights.router"));
 const user_router_1 = __importDefault(require("./routers/user.router"));
 const app = (0, express_1.default)();
-app.use((req, res, next) => {
-    console.log("Origin:", req.headers.origin);
-    res.header("Access-Control-Allow-Origin", "https://nammarights.vercel.app");
-    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
-    res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
-    next();
-});
-app.options("*", (req, res) => {
-    res.header("Access-Control-Allow-Origin", "https://nammarights.vercel.app");
-    res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
-    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    res.sendStatus(200);
-});
+app.use((0, cors_1.default)());
 app.use(body_parser_1.default.json());
 (0, connectDB_1.ConnectToDB)();
 app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -42,3 +31,4 @@ app.use("/api/user", user_router_1.default);
 app.listen(1000, () => {
     console.log("server running on port 1000");
 });
+exports.default = app;
