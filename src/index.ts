@@ -45,3 +45,6 @@ app.use("/api/user", UserRouter);
 app.listen(1000, () => {
     console.log("server running on port 1000")
 });
+
+
+export default app;
