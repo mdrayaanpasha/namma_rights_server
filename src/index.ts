@@ -10,7 +10,7 @@ import UserRouter from "./routers/user.router";
 
 const app = express();
 app.use(cors({
-    origin: "https://nammarights.vercel.app/",  // Pro tip: Change "*" to your actual frontend URL in prod
+    origin: "https://nammarights.vercel.app",  // Pro tip: Change "*" to your actual frontend URL in prod
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization"
 }));
