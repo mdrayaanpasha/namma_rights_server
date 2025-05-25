@@ -19,11 +19,16 @@ const connectDB_1 = require("./config/connectDB");
 const rights_router_1 = __importDefault(require("./routers/rights.router"));
 const user_router_1 = __importDefault(require("./routers/user.router"));
 const app = (0, express_1.default)();
-app.use((0, cors_1.default)());
+app.use((0, cors_1.default)({
+    origin: "https://namma-rights.vercel.app", // Allow only your frontend
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization"
+}));
 app.use(body_parser_1.default.json());
 (0, connectDB_1.ConnectToDB)();
 app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.send("hello world this is rayaan pasha");
+    (0, connectDB_1.ConnectToDB)();
 }));
 app.use("/api/rights", rights_router_1.default);
 app.use("/api/user", user_router_1.default);
