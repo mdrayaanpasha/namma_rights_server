@@ -20,7 +20,7 @@ const rights_router_1 = __importDefault(require("./routers/rights.router"));
 const user_router_1 = __importDefault(require("./routers/user.router"));
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
-    origin: "https://namma-rights.vercel.app", // Allow only your frontend
+    origin: "https://nammarights.vercel.app/", // Pro tip: Change "*" to your actual frontend URL in prod
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization"
 }));
