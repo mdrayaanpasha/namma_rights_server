@@ -10,10 +10,19 @@ import UserRouter from "./routers/user.router";
 
 const app = express();
 app.use(cors({
-    origin: "https://nammarights.vercel.app", // 👈 No trailing slash!
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+    origin: function (origin, callback) {
+        const allowedOrigins = [
+            "https://nammarights.vercel.app",
+            "http://localhost:3000"
+        ];
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    }
 }));
+
 
 app.use(bodyParser.json());
 ConnectToDB();
