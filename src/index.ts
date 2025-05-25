@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 ConnectToDB();
 
 app.get("/", async (req: Request, res: Response): Promise<any> => {
-    res.send("hello world this is rayaan pasha")
+    res.send("hello world this is test")
     ConnectToDB();
 })
 
