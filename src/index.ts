@@ -9,11 +9,7 @@ import UserRouter from "./routers/user.router";
 
 
 const app = express();
-app.use(cors({
-    origin: "*",  // Pro tip: Change "*" to your actual frontend URL in prod
-    methods: "GET,POST,PUT,DELETE",
-    allowedHeaders: "Content-Type,Authorization"
-}));
+app.use(cors());
 
 app.use(bodyParser.json());
 ConnectToDB();
